@@ -1,45 +1,79 @@
 @extends('layouts.app')
 @section('content')
-    <div class="main-wrapper login-body">
-        <div class="login-wrapper">
-            <div class="container">
-                <div class="loginbox">
-                    <div class="login-left">
-                        <img class="img-fluid" src="{{ URL::to('assets/img/logo.png') }}" alt="Logo">
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card mx-4">
+            <div class="card-body p-4">
+                <h1>{{ trans('panel.site_title') }}</h1>
+
+                <p class="text-muted">{{ trans('global.login') }}</p>
+
+                @if(session('message'))
+                    <div class="alert alert-info" role="alert">
+                        {{ session('message') }}
                     </div>
-                    <div class="login-right">
-                        <div class="login-right-wrap">
-                            <h1>Login</h1>
-                            {{-- message --}}
-                            {!! Toastr::message() !!}
-                            <p class="account-subtitle">Access to our dashboard</p>
-                            <form method="POST" action="{{ route('login') }}">
-                                @csrf
-                                <div class="form-group">
-                                    <input class="form-control  @error('email') is-invalid @enderror" type="text" name="email" placeholder="Enter Email" value="{{ old('email') }}" required autocomplete="off">
-                                </div>
-                                <div class="form-group">
-                                    <input class="form-control  @error('password') is-invalid @enderror" type="password" name="password" placeholder="Enter Password" value="{{ old('password') }}" required autocomplete="off">
-                                </div>
-                                <div class="form-group">
-                                    <button class="btn btn-primary btn-block" type="submit">Login</button>
-                                </div>
-                            </form>
-                            <div class="text-center forgotpass">
-                                <a href="{{ route('forget-password') }}">Forgot Password?</a>
+                @endif
+
+                <form method="POST" action="{{ route('login') }}">
+                    @csrf
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fa fa-user"></i>
+                            </span>
+                        </div>
+
+                        <input id="email" name="email" type="text" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" required autocomplete="email" autofocus placeholder="{{ trans('global.login_email') }}" value="{{ old('email', null) }}">
+
+                        @if($errors->has('email'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first('email') }}
                             </div>
-                            <div class="login-or"><span class="or-line"></span> <span class="span-or">or</span></div>
-                            <div class="social-login"><span>Login with</span><a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a>
-                                <a href="#" class="google"><i class="fab fa-google"></i></a>
+                        @endif
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-lock"></i></span>
+                        </div>
+
+                        <input id="password" name="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" required placeholder="{{ trans('global.login_password') }}">
+
+                        @if($errors->has('password'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first('password') }}
                             </div>
-                            <div class="text-center dont-have">Don’t have an account?
-                                <a href="{{ route('register') }}">Register</a>
-                            </div>
+                        @endif
+                    </div>
+
+                    <div class="input-group mb-4">
+                        <div class="form-check checkbox">
+                            <input class="form-check-input" name="remember" type="checkbox" id="remember" style="vertical-align: middle;" />
+                            <label class="form-check-label" for="remember" style="vertical-align: middle;">
+                                {{ trans('global.remember_me') }}
+                            </label>
                         </div>
                     </div>
-                </div>
+
+                    <div class="row">
+                        <div class="col-6">
+                            <button type="submit" class="btn btn-primary px-4">
+                                {{ trans('global.login') }}
+                            </button>
+                        </div>
+                        <div class="col-6 text-right">
+                            @if(Route::has('password.request'))
+                                <a class="btn btn-link px-0" href="{{ route('password.request') }}">
+                                    {{ trans('global.forgot_password') }}
+                                </a><br>
+                            @endif
+
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
+</div>
 @endsection
-

@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Booking;
-use DB;
 
 class HomeController extends Controller
 {
@@ -23,17 +21,8 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-
-    // home page
     public function index()
     {
-        $allBookings = DB::table('bookings')->get();
-        return view('dashboard.home',compact('allBookings'));
-    }
-
-    // profile
-    public function profile()
-    {
-        return view('profile');
+        return view('home');
     }
 }

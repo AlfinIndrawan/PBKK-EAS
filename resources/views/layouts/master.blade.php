@@ -26,10 +26,11 @@
     <div class="main-wrapper">
         <div class="header">
             <div class="header-left">
-                <a href="home" class="logo"> <img src="{{ URL::to('assets/img/hotel_logo.png') }}"
-                        width="50" height="70" alt="logo"> <span class="logoclass">HOTEL</span> </a>
-                <a href="home" class="logo logo-small"> <img src="{{ URL::to('assets/img/hotel_logo.png') }}"
-                        alt="Logo" width="30" height="30"> </a>
+                <a href="{{ route('home') }}" class="logo"> <img
+                        src="{{ URL::to('assets/img/hotel_logo.png') }}" width="50" height="70" alt="logo"> <span
+                        class="logoclass">HOTEL</span> </a>
+                <a href="{{ route('home') }}" class="logo logo-small"> <img
+                        src="{{ URL::to('assets/img/hotel_logo.png') }}" alt="Logo" width="30" height="30"> </a>
             </div>
             <a href="javascript:void(0);" id="toggle_btn"> <i class="fe fe-text-align-left"></i> </a>
             <a class="mobile_btn" id="mobile_btn"> <i class="fas fa-bars"></i> </a>

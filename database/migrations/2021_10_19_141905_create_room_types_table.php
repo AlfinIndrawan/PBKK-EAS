@@ -16,16 +16,16 @@ class CreateRoomTypesTable extends Migration
         Schema::create('room_types', function (Blueprint $table) {
             $table->id();
             $table->string('room_name')->nullable();
-            $table->timestamps();
+            $table->price();
         });
 
         DB::table('room_types')->insert([
-            ['room_name' => 'Single'],
-            ['room_name' => 'Double'],
-            ['room_name' => 'Quad'],
-            ['room_name' => 'King'],
-            ['room_name' => 'Suite'],
-            ['room_name' => 'Villa'],
+            ['room_name' => 'Single', 'price' => '100'],
+            ['room_name' => 'Double', 'price' => '200'],
+            ['room_name' => 'Queen', 'price' => '500'],
+            ['room_name' => 'King', 'price' => '600'],
+            ['room_name' => 'Suite', 'price' => '800'],
+            ['room_name' => 'Villa', 'price' => '1000'],
         ]);
     }
 
