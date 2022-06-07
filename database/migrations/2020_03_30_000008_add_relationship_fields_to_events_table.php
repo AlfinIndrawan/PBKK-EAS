@@ -14,6 +14,5 @@ class AddRelationshipFieldsToEventsTable extends Migration
             $table->unsignedInteger('user_id');
             $table->foreign('user_id', 'user_fk_1226839')->references('id')->on('users');
         });
-
     }
 }
