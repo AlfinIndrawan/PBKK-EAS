@@ -52,7 +52,8 @@
                         @foreach (config('panel.available_languages') as $langLocale => $langName)
                             <a class="dropdown-item"
                                 href="{{ url()->current() }}?change_language={{ $langLocale }}">{{ strtoupper($langLocale) }}
-                                ({{ $langName }})</a>
+                                ({{ $langName }})
+                            </a>
                         @endforeach
                     </div>
                 </li>
@@ -173,14 +174,6 @@
                         }
                     },
                     {
-                        extend: 'copy',
-                        className: 'btn-default',
-                        text: copyButtonTrans,
-                        exportOptions: {
-                            columns: ':visible'
-                        }
-                    },
-                    {
                         extend: 'csv',
                         className: 'btn-default',
                         text: csvButtonTrans,
@@ -196,30 +189,8 @@
                             columns: ':visible'
                         }
                     },
-                    {
-                        extend: 'pdf',
-                        className: 'btn-default',
-                        text: pdfButtonTrans,
-                        exportOptions: {
-                            columns: ':visible'
-                        }
-                    },
-                    {
-                        extend: 'print',
-                        className: 'btn-default',
-                        text: printButtonTrans,
-                        exportOptions: {
-                            columns: ':visible'
-                        }
-                    },
-                    {
-                        extend: 'colvis',
-                        className: 'btn-default',
-                        text: colvisButtonTrans,
-                        exportOptions: {
-                            columns: ':visible'
-                        }
-                    }
+
+
                 ]
             });
 
