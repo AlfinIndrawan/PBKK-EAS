@@ -5,4 +5,4 @@
 - Run __composer install__
 - Run __php artisan key:generate__
 - Run __php artisan migrate --seed__ 
-- You can login to adminpanel with default credentials __admin@admin.com__ - __password__
+- login admin __admin@admin.com__ - __password__
