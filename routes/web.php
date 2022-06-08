@@ -9,7 +9,10 @@ Route::get('/home', function () {
     return redirect()->route('admin.home');
 });
 
-Auth::routes(['register' => false]);
+// Auth::routes(['register' => false]);
+Auth::routes(['hoteltripregister' => false]);
+Route::get('/register', 'Auth\AuthController@register')->name('register');
+Route::post('/register', 'Auth\AuthController@storeUser');
 // Admin
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth']], function () {
